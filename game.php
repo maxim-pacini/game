@@ -12,6 +12,42 @@
         
         <?php echo date('d/m/Y'); ?>
     </div>
+
+
+
+    <button id="monBouton">+1</button>
+    <p>Valeur : <span id="valeur">0</span></p>
+    <?php
+    session_start();
+    if (!isset($_SESSION['compteur'])) {
+        $_SESSION['compteur'] = 0;
+    }
+    $_SESSION['compteur']++;
+    echo $_SESSION['compteur'];
+    ?>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<script>
+document.getElementById('bouton').addEventListener('click', function() {
+    fetch('index.php').then(response => response.text()).then(data => {
+            document.getElementById('valeur').innerText = data;
+        });
+});
+</script>
     
 </body>
 </html>
